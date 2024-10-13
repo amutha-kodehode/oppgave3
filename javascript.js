@@ -40,60 +40,78 @@ skip Otto!
 const cities = ["New York", "London", "Paris", "Berlin", "Copenhagen", "Rome"];
 
 const people = [
-	{
-		name: "Thomas",
-		male: true,
-		age: 23,
-		hobbies: ["cycling", "football", "pool"]
-	},
-	{
-		name: "Susan",
-		male: false,
-		age: 26,
-		hobbies: ["jogging", "travelling", "dancing"]
-	},
-	{
-		name: "Monica",
-		male: false,
-		age: 21,
-		hobbies: ["skateboarding", "guitar", "concerts"]
-	},
-	{
-		name: "Avery",
-		male: true,
-		age: 28,
-		hobbies: ["writing", "games", "memes"]
-	},
-	{
-		name: "Phillip",
-		male: true,
-		age: 24,
-		hobbies: ["boxing", "wrestling", "mma"]
-	},
-	{
-		name: "Otto",
-		male: true,
-		age: 36,
-		hobbies: ["movies", "cinema", "music"]
-	},
-	{
-		name: "Annabelle",
-		male: false,
-		age: 30,
-		hobbies: ["makeup", "fashion", "shopping"]
-	},
-	{
-		name: "Cathy",
-		male: false,
-		age: 18,
-		hobbies: ["design", "drawing", "css"]
-	}
+  {
+    name: "Thomas",
+    male: true,
+    age: 23,
+    hobbies: ["cycling", "football", "pool"],
+  },
+  {
+    name: "Susan",
+    male: false,
+    age: 26,
+    hobbies: ["jogging", "travelling", "dancing"],
+  },
+  {
+    name: "Monica",
+    male: false,
+    age: 21,
+    hobbies: ["skateboarding", "guitar", "concerts"],
+  },
+  {
+    name: "Avery",
+    male: true,
+    age: 28,
+    hobbies: ["writing", "games", "memes"],
+  },
+  {
+    name: "Phillip",
+    male: true,
+    age: 24,
+    hobbies: ["boxing", "wrestling", "mma"],
+  },
+  {
+    name: "Otto",
+    male: true,
+    age: 36,
+    hobbies: ["movies", "cinema", "music"],
+  },
+  {
+    name: "Annabelle",
+    male: false,
+    age: 30,
+    hobbies: ["makeup", "fashion", "shopping"],
+  },
+  {
+    name: "Cathy",
+    male: false,
+    age: 18,
+    hobbies: ["design", "drawing", "css"],
+  },
 ];
+console.log("---------------------------------------------");
+console.log("Skrive ut svar for første oppgave nedenfor");
+console.log("---------------------------------------------");
 let combinedAge = 0;
-
 //your code here
+for (let i = 0; i < people.length; i++) {
+  if (people[i].name === "Otto") {
+    continue;
+  }
+  people[i].city = cities[Math.floor(Math.random() * cities.length)]; //her finner vi city fra random number
+  people[i].title = people[i].male ? "Mr" : "Ms"; //her lager vi en ny variable title
+  people[i].age += 2; // her øker vi alder til hver person ved 2
+  people[i].hobbies.unshift("coding"); //her tillater vi coding til hver person hobby
+  combinedAge += people[i].age; //her finner vi combinedAge ved bruk av += operator
+}
 
-let averageAge = 0;
+let averageAge = combinedAge / people.length;
+console.log(
+  "Combined age of people  adding 2 to everyone except adding Otto's age " +
+    combinedAge
+);
+console.log("Average age of people without adding Otto's age " + averageAge);
+console.log(people);
 
 /******************************************************************************
 2.
@@ -116,8 +134,29 @@ Add a second parameter to the function that decides how many faces the dice
 should have.
 diceRoller(5, 20) should return an array of 5 random numbers ranging from 1-20 
 ******************************************************************************/
+console.log("---------------------------------------------");
+console.log("Skrive ut svar for andre funksjon nedenfor");
+console.log("---------------------------------------------");
 
-
+function diceRoller(numberOfTry) {
+  let diceTryValues = [numberOfTry];
+  for (let i = 0; i < numberOfTry; i++) {
+    diceTryValues[i] = Math.ceil(Math.random() * 6);
+  }
+  return diceTryValues;
+}
+function polyHedralDiceRoller(numberOfTry, numberOfSides) {
+  let diceTryValues = [numberOfTry];
+  for (let i = 0; i < numberOfTry; i++) {
+    diceTryValues[i] = Math.ceil(Math.random() * numberOfSides);
+  }
+  return diceTryValues;
+}
+console.log("Dice roller arrays with single input method");
+console.log(diceRoller(4));
+console.log(diceRoller(6));
+console.log("Dice roller arrays with two input method");
+console.log(polyHedralDiceRoller(5, 20));
 /******************************************************************************
 3.
 
@@ -141,7 +180,30 @@ Example:
 should return:
 "this text needs to be cleaned up"
 ******************************************************************************/
+console.log("---------------------------------------------");
+console.log("Skrive ut svar for tredje funksjon nedenfor");
+console.log("---------------------------------------------");
 
+let cleanUpTxtArray = [
+  " thIS",
+  "teXt  ",
+  " nEeds ",
+  "to",
+  "BE",
+  "cleANED   ",
+  " Up",
+];
+console.log("Input Array" + cleanUpTxtArray.toString());
+function textCleanUp(cleanUpArray) {
+  let cleanedString = "";
+  for (let word of cleanUpArray) {
+    cleanedString += word.trim().toLowerCase() + " ";
+    console.log(word);
+  }
+  console.log("*****Output String*****");
+  console.log(cleanedString.trim());
+}
+textCleanUp(cleanUpTxtArray);
 
 /******************************************************************************
 4.
@@ -175,6 +237,57 @@ should be detected.
 I have provided some string variables to test your function with.
 ******************************************************************************/
 
+console.log("---------------------------------------------");
+console.log("Skrive ut svar for fjerde funksjon nedenfor");
+console.log("---------------------------------------------");
+
+let salutation = {};
+salutation["hello"] = "English";
+salutation["ciao"] = "Italian";
+salutation["salut"] = "French";
+salutation["hallo"] = "German";
+salutation["hola"] = "Spanish";
+salutation["czesc"] = "Polish";
+
+let testCaseString = "Now I am saying hello in english";
+console.log("Test case 1: " + testCaseString);
+helloChecker(testCaseString);
+testCaseString = "Adesso dico ciao in italiano";
+console.log("Test case 2: " + testCaseString);
+helloChecker(testCaseString);
+testCaseString = "Maintenant je te dis salut en français";
+console.log("Test case 3: " + testCaseString);
+helloChecker(testCaseString);
+testCaseString = "hallo auf Deutsch";
+console.log("Test case 4: " + testCaseString);
+helloChecker(testCaseString);
+testCaseString = "Ahora estoy diciendo hola en español";
+console.log("Test case 5: " + testCaseString);
+helloChecker(testCaseString);
+testCaseString = "Teraz mówię czesc po polsku";
+console.log("Test case 6: " + testCaseString);
+helloChecker(testCaseString);
+testCaseString =
+  "Now I am saying hello in english and Adesso dico ciao in italiano";
+console.log("Test case 7: " + testCaseString);
+helloChecker(testCaseString);
+testCaseString = "Now I am going to test without any required words";
+console.log("Test case 8: " + testCaseString);
+helloChecker(testCaseString);
+
+function helloChecker(textIpForHello) {
+  let languagesAns = [];
+  for (let hello in salutation) {
+    if (textIpForHello.includes(hello)) {
+      languagesAns.push(salutation[hello]);
+    }
+  }
+  if (languagesAns.length > 0) {
+    console.log(`HELLO detected in ${languagesAns.toString()}`);
+  } else {
+    console.log("No Hello Detected");
+  }
+}
 
 /******************************************************************************
 5.
@@ -205,6 +318,29 @@ doubleSwap("what is the point of this?", "o", "t")
 should return "whao is ohe ptino tf ohis?"
 ******************************************************************************/
 
+console.log("---------------------------------------------");
+console.log("Skrive ut svar for fjerde funksjon nedenfor");
+console.log("---------------------------------------------");
 function doubleSwap(string, charA, charB) {
-	//your code here
+  const stringAsArray = [...string];
+  for (let i = 0; i < stringAsArray.length; i++) {
+    if (stringAsArray[i] === charA) {
+      stringAsArray[i] = charB;
+    } else if (stringAsArray[i] === charB) {
+      stringAsArray[i] = charA;
+    }
+  }
+  console.log("Output \n" + stringAsArray.join(""));
 }
+console.log("Testcase 1 Text --this is a string,charA - i,charB - s ");
+doubleSwap("this is a string", "i", "s");
+console.log("Testcase 2 Text-what is the point of this?,charA - o,charB - t");
+doubleSwap("what is the point of this?", "o", "t");
+console.log("Testcase 3 Text-Try one without replace charB?,charA - o,charB- ");
+doubleSwap("Try one without replace charB?", "o", "");
+console.log("Testcase 4 Text-Try one without replace charA?,charA -,charB - t");
+doubleSwap("Try one without replace charA?", "", "t");
+console.log("Testcase 5 Text-Try one without charA & charB?,charA -,charB -");
+doubleSwap("Try one without charA & charB?", "", "");
+
+console.log("Thank you for the challenges! Have a nice day!");
